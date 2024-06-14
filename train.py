@@ -61,7 +61,7 @@ print(f"Training completed. Parameters saved: theta0 = {theta0_actual}, theta1 =
 final_predictions = theta0_actual + theta1_actual * mileage
 
 # Calculate Mean Absolute Percentage Error (MAPE)
-mape = np.mean(np.abs((final_predictions - price) / price)) * 100
+mape = np.mean(np.absolute((final_predictions - price) / price)) * 100
 
 print(f"Mean Absolute Percentage Error (MAPE): {mape:.2f}%")
 
