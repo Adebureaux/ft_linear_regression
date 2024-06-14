@@ -68,8 +68,7 @@ print(f"Mean Absolute Percentage Error (MAPE): {mape:.2f}%")
 # Plotting the results
 plt.scatter(mileage, price, color='blue', label='Data points')
 plt.plot(mileage, final_predictions, color='red', label='Regression line')
-plt.text(0.05, 0.95, f'MAPE: {mape:.2f}%', transform=plt.gca().transAxes,
-         fontsize=12, verticalalignment='top', bbox=dict(boxstyle='round,pad=0.5', edgecolor='black', facecolor='white'))
+plt.text(0.05, 0.95, f'MAPE: {mape:.2f}%', transform=plt.gca().transAxes, fontsize=12, verticalalignment='top', bbox=dict(boxstyle='round,pad=0.5', edgecolor='black', facecolor='white'))
 plt.xlabel('Mileage')
 plt.ylabel('Price')
 plt.title('Mileage vs Price')
