@@ -4,7 +4,7 @@ import json
 import matplotlib.pyplot as plt
 
 # Load dataset
-data = pd.read_csv('data.csv')  # Assuming the dataset is in a file named 'data.csv'
+data = pd.read_csv('data.csv')
 mileage = data['km'].values
 price = data['price'].values
 
@@ -24,36 +24,36 @@ m = len(mileage)
 theta0, theta1 = 0.0, 0.0
 
 # Hyperparameters
-learning_rate = 0.01  # Adjust as necessary
-num_iterations = 1000
+learning_rate = 0.01
+num_iterations = 801
 
 # Gradient Descent
 for _ in range(num_iterations):
-    # Compute the predicted prices
-    predictions = theta0 + theta1 * mileage_normalized
-    
-    # Compute the errors
-    errors = predictions - price_normalized
-    
-    # Update theta0 and theta1
-    temp_theta0 = theta0 - learning_rate * (1 / m) * np.sum(errors)
-    temp_theta1 = theta1 - learning_rate * (1 / m) * np.sum(errors * mileage_normalized)
+  # Compute the predicted prices
+  predictions = theta0 + theta1 * mileage_normalized
+  
+  # Compute the errors
+  errors = predictions - price_normalized
+  
+  # Update theta0 and theta1
+  temp_theta0 = theta0 - learning_rate * (1 / m) * np.sum(errors)
+  temp_theta1 = theta1 - learning_rate * (1 / m) * np.sum(errors * mileage_normalized)
 
-    # Update theta values
-    theta0, theta1 = temp_theta0, temp_theta1
+  # Update theta values
+  theta0, theta1 = temp_theta0, temp_theta1
 
-    # Print progress every 100 iterations
-    if _ % 100 == 0:
-        print(f"Iteration {_}: theta0 = {theta0}, theta1 = {theta1}")
+  # Print progress every 100 iterations
+  if _ % 100 == 0:
+    print(f"Iteration {_}: theta0 = {theta0}, theta1 = {theta1}")
 
-# Denormalize theta1 to get the actual slope
+# Denormalize theta0 and theta1
 theta1_actual = theta1 * (price_std / mileage_std)
 theta0_actual = price_mean - theta1_actual * mileage_mean
 
 # Save the parameters as Python scalars
 params = {'theta0': theta0_actual, 'theta1': theta1_actual}
 with open('params.json', 'w') as f:
-    json.dump(params, f)
+  json.dump(params, f)
 
 print(f"Training completed. Parameters saved: theta0 = {theta0_actual}, theta1 = {theta1_actual}")
 
