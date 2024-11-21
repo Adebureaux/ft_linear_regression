@@ -24,8 +24,8 @@ m = len(mileage)
 theta0, theta1 = 0.0, 0.0
 
 # Hyperparameters
-learning_rate = 0.01
-num_iterations = 801
+learning_rate = 0.001
+num_iterations = 1 + 1000
 
 # Gradient Descent
 for _ in range(num_iterations):
